@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>ws client</title>
+	</head>
+	<body>
+		<button onclick="send()">发送</button>
+		<script>
+			var ws = new WebSocket('ws://localhost:8181');
+			ws.onppen = function(e){
+				console.log('connection to server opened');
+			};
+			function send() {
+				ws.send('message from client');
+			}
+			ws.onmessage = function(e){
+				console.log('message from server received');
+				console.log(e.data);
+			}
+		</script>
+	</body>
+</html>
